@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -78,13 +78,6 @@ const Navbar = () => {
                 <i className="bi bi-person-circle me-1"></i>
                 Perfil
               </Link>
-            </li>
-            
-            <li className="nav-item ms-lg-3">
-              <div className="d-flex align-items-center text-white px-3 py-2 bg-primary bg-opacity-50 rounded my-2 my-lg-0">
-                <i className="bi bi-star-fill text-warning me-2"></i>
-                <span className="fw-bold">{user?.TotalPoints?.toLocaleString() || 0}</span>
-              </div>
             </li>
             
             <li className="nav-item ms-lg-2">
