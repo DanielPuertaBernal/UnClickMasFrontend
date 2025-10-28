@@ -4,11 +4,13 @@
       <i class="bi bi-list"></i>
     </button>
 
-    <ul v-if="isOpen" class="menu animate__animated animate__fadeInLeft">
-      <li @click="$router.push('/home')"><i class="bi bi-house"></i> Inicio</li>
-      <li @click="$router.push('/ranking')"><i class="bi bi-trophy"></i> Ranking</li>
-      <li @click="logout"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</li>
-    </ul>
+    <transition name="fade">
+      <ul v-if="isOpen" class="menu">
+        <li @click="$router.push('/home')"><i class="bi bi-house"></i> Inicio</li>
+        <li @click="$router.push('/ranking')"><i class="bi bi-trophy"></i> Ranking</li>
+        <li @click="logout"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</li>
+      </ul>
+    </transition>
   </div>
 </template>
 
@@ -35,31 +37,46 @@ function logout() {
   left: 0;
   top: 0;
   height: 100vh;
-  width: 60px;
-  background: #a1c4fd;
-  transition: width 0.3s;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  width: 65px;
+  background: #2d3142;
+  color: #fff;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  z-index: 100;
 }
 .sidebar.open {
-  width: 200px;
+  width: 210px;
 }
 .toggle-btn {
-  background: transparent;
+  background: none;
   border: none;
-  color: white;
-  font-size: 1.5rem;
-  margin: 10px;
+  color: #fff;
+  font-size: 1.7rem;
+  margin: 15px;
+  cursor: pointer;
 }
 .menu {
   list-style: none;
-  padding: 10px;
-  color: white;
+  padding: 20px 10px;
 }
 .menu li {
-  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0;
   cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
 }
 .menu li:hover {
-  color: #333;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding-left: 8px;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 </style>
