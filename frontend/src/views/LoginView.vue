@@ -12,9 +12,7 @@
         <input type="password" v-model="password" required />
       </div>
 
-      <button type="submit" class="btn-auth">
-        <i class="bi bi-box-arrow-in-right me-2"></i> Ingresar
-      </button>
+      <button type="submit" class="btn-auth">Ingresar</button>
     </form>
 
     <p class="auth-link">

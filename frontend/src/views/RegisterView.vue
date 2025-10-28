@@ -22,9 +22,7 @@
         <input type="password" v-model="password" required />
       </div>
 
-      <button type="submit" class="btn-auth">
-        <i class="bi bi-person-plus me-2"></i> Registrarme
-      </button>
+      <button type="submit" class="btn-auth">Registrarme</button>
     </form>
 
     <p class="auth-link">
