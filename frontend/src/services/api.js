@@ -38,24 +38,24 @@ api.interceptors.response.use(
 
 export const authService = {
   register: async (userData) => {
-    const response = await api.post('/users/register', userData);
+    const response = await api.post('/register', userData);
     return response.data;
   },
 
   login: async (identifier, password) => {
-    const response = await api.post('/users/login', { identifier, password });
+    const response = await api.post('/login', { identifier, password });
     return response.data;
   },
 };
 
 export const gameService = {
   addPoints: async (points) => {
-    const response = await api.put('/users/points', { points });
+    const response = await api.put('/points', { points });
     return response.data;
   },
 
   getLeaderboard: async () => {
-    const response = await api.get('/users/leaderboard');
+    const response = await api.get('/leaderboard');
     return response.data;
   },
 };
