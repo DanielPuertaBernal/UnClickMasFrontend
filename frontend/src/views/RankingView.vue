@@ -1,63 +1,72 @@
 <template>
   <div class="ranking-container">
-    <h2 class="mb-3">🏆 Ranking de Jugadores</h2>
+    <h2 class="ranking-title"><i class="bi bi-trophy me-2"></i>Ranking General</h2>
 
-    <input
-      v-model="searchQuery"
-      type="text"
-      class="form-control mb-3"
-      placeholder="Buscar jugador..."
-    />
-
-    <ul class="list-group">
-      <li
-        v-for="(user, index) in filteredUsers"
-        :key="user.id"
-        class="list-group-item d-flex justify-content-between align-items-center"
-      >
-        <span>
-          <strong>{{ index + 1 }}.</strong> {{ user.username }}
-        </span>
-        <span class="badge bg-success">{{ user.totalPoints }} pts</span>
-      </li>
-    </ul>
+    <table class="ranking-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Usuario</th>
+          <th>Cerebritos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(user, index) in ranking" :key="user.id">
+          <td>{{ index + 1 }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.braincoins }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { userService } from "../services/userService";
-import Swal from "sweetalert2";
 
-const users = ref([]);
-const searchQuery = ref("");
+const ranking = ref([]);
 
 onMounted(async () => {
-  try {
-    const { data } = await userService.getLeaderboard();
-    users.value = data;
-  } catch (error) {
-    Swal.fire("Error", "No se pudo cargar el ranking", "error");
-  }
+  ranking.value = await userService.getLeaderboard();
 });
-
-const filteredUsers = computed(() =>
-  users.value.filter(u =>
-    u.username.toLowerCase().includes(searchQuery.value.toLowerCase())
-  )
-);
 </script>
 
 <style scoped>
 .ranking-container {
-  max-width: 600px;
-  margin: auto;
-  background: #ffffff;
-  padding: 25px;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 0 10px rgba(200, 200, 200, 0.3);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  font-family: "Poppins", sans-serif;
 }
-input {
-  border-radius: 10px;
+
+.ranking-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #4a90e2;
+  margin-bottom: 20px;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ranking-table th,
+.ranking-table td {
+  border-bottom: 1px solid #333;
+  padding: 12px;
+  text-align: left;
+}
+
+.ranking-table th {
+  color: #a0a0a0;
+  font-weight: 500;
+}
+
+.ranking-table tr:hover {
+  background-color: #252525;
 }
 </style>
