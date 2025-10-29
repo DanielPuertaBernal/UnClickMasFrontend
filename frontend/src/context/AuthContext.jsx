@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
       await authService.register(userData);
       
       // Después del registro, hacer login automáticamente
-      const loginResponse = await authService.login(userData.Email, userData.Password);
+      const loginResponse = await authService.login(userData.email, userData.password);
       
       localStorage.setItem('token', loginResponse.token);
       localStorage.setItem('user', JSON.stringify(loginResponse.user));
@@ -99,7 +99,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateUserPoints = (newPoints) => {
-    const updatedUser = { ...user, TotalPoints: newPoints };
+    const updatedUser = { ...user, totalpoints: newPoints };
     setUser(updatedUser);
     localStorage.setItem('user', JSON.stringify(updatedUser));
   };

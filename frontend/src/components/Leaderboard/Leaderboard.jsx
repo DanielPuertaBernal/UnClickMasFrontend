@@ -102,11 +102,11 @@ const Leaderboard = () => {
                     <tbody>
                       {leaderboard.slice(0, 10).map((player, index) => {
                         const position = index + 1;
-                        const isCurrentUser = player.UserName === user?.UserName;
+                        const isCurrentUser = player.username === user?.username;
 
                         return (
                           <tr
-                            key={player.UserName}
+                            key={player.username}
                             className={`${getMedalClass(position)} ${
                               isCurrentUser ? 'border-start border-primary border-3' : ''
                             }`}
@@ -117,11 +117,11 @@ const Leaderboard = () => {
                             <td>
                               <div className="d-flex align-items-center">
                                 <div className="avatar-circle bg-primary text-white me-2 d-none d-sm-flex">
-                                  {player.UserName.charAt(0).toUpperCase()}
+                                  {player.username.charAt(0).toUpperCase()}
                                 </div>
                                 <div>
                                   <div className={`${isCurrentUser ? 'fw-bold' : ''}`}>
-                                    {player.UserName}
+                                    {player.username}
                                     {isCurrentUser && (
                                       <span className="badge bg-primary ms-2">Tú</span>
                                     )}
@@ -130,7 +130,7 @@ const Leaderboard = () => {
                               </div>
                             </td>
                             <td className="text-end fw-bold text-primary">
-                              {player.TotalPoints.toLocaleString()}
+                              {player.totalpoints.toLocaleString()}
                               <i className="bi bi-star-fill ms-2 text-warning"></i>
                             </td>
                           </tr>
@@ -144,19 +144,19 @@ const Leaderboard = () => {
           </div>
 
           {/* Mostrar posición del usuario si no está en el top 10 */}
-          {user && leaderboard.findIndex((p) => p.UserName === user.UserName) >= 10 && (
+          {user && leaderboard.findIndex((p) => p.username === user.username) >= 10 && (
             <div className="card shadow mt-3">
               <div className="card-body">
                 <h6 className="text-muted mb-2">Tu posición:</h6>
                 <div className="d-flex justify-content-between align-items-center">
                   <div>
                     <span className="fw-bold fs-5">
-                      #{leaderboard.findIndex((p) => p.UserName === user.UserName) + 1}
+                      #{leaderboard.findIndex((p) => p.username === user.username) + 1}
                     </span>
-                    <span className="ms-3">{user.UserName}</span>
+                    <span className="ms-3">{user.username}</span>
                   </div>
                   <span className="fw-bold text-primary">
-                    {user.TotalPoints.toLocaleString()} puntos
+                    {user.totalpoints.toLocaleString()} puntos
                   </span>
                 </div>
               </div>

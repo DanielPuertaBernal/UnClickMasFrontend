@@ -5,11 +5,11 @@ import Swal from 'sweetalert2';
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    Name: '',
-    Email: '',
-    UserName: '',
-    Password: '',
-    confirmPassword: '',
+    name: '',
+    email: '',
+    username: '',
+    password: '',
+    confirmpassword: '',
   });
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
@@ -26,7 +26,7 @@ const Register = () => {
     e.preventDefault();
 
     // Validaciones
-    if (formData.Password !== formData.confirmPassword) {
+    if (formData.password !== formData.confirmpassword) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
@@ -35,7 +35,7 @@ const Register = () => {
       return;
     }
 
-    if (formData.Password.length < 6) {
+    if (formData.password.length < 6) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
@@ -45,7 +45,7 @@ const Register = () => {
     }
 
     setLoading(true);
-    const { confirmPassword, ...registerData } = formData;
+    const { confirmpassword, ...registerData } = formData;
     const result = await register(registerData);
     setLoading(false);
 
@@ -74,9 +74,9 @@ const Register = () => {
                   <input
                     type="text"
                     className="form-control"
-                    id="Name"
-                    name="Name"
-                    value={formData.Name}
+                    id="name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     placeholder="Ingresa tu nombre"
                     required
@@ -90,9 +90,9 @@ const Register = () => {
                   <input
                     type="email"
                     className="form-control"
-                    id="Email"
-                    name="Email"
-                    value={formData.Email}
+                    id="email"
+                    name="email"
+                    value={formData.email}
                     onChange={handleChange}
                     placeholder="correo@ejemplo.com"
                     required
@@ -106,9 +106,9 @@ const Register = () => {
                   <input
                     type="text"
                     className="form-control"
-                    id="UserName"
-                    name="UserName"
-                    value={formData.UserName}
+                    id="username"
+                    name="username"
+                    value={formData.username}
                     onChange={handleChange}
                     placeholder="usuario123"
                     required
@@ -122,9 +122,9 @@ const Register = () => {
                   <input
                     type="password"
                     className="form-control"
-                    id="Password"
-                    name="Password"
-                    value={formData.Password}
+                    id="password"
+                    name="password"
+                    value={formData.password}
                     onChange={handleChange}
                     placeholder="Mínimo 6 caracteres"
                     required
@@ -138,9 +138,9 @@ const Register = () => {
                   <input
                     type="password"
                     className="form-control"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    value={formData.confirmPassword}
+                    id="confirmpassword"
+                    name="confirmpassword"
+                    value={formData.confirmpassword}
                     onChange={handleChange}
                     placeholder="Repite tu contraseña"
                     required

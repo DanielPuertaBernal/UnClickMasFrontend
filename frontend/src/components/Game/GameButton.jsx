@@ -28,7 +28,7 @@ const GameButton = () => {
       const pointsToSave = clicks - savedClicks;
       const response = await gameService.addPoints(pointsToSave);
       setSavedClicks(clicks);
-      updateUserPoints(response.TotalPoints);
+      updateUserPoints(response.totalpoints);
       
       // Mostrar notificación pequeña
       const Toast = Swal.mixin({
@@ -74,11 +74,11 @@ const GameButton = () => {
               </h2>
               
               <div className="mb-4">
-                <h3 className="text-muted mb-2">Hola, {user?.UserName}</h3>
+                <h3 className="text-muted mb-2">Hola, {user?.username}</h3>
                 <div className="d-flex justify-content-center gap-4 flex-wrap">
                   <div>
                     <small className="text-muted d-block">Puntos Totales</small>
-                    <h4 className="text-primary mb-0">{user?.TotalPoints || 0}</h4>
+                    <h4 className="text-primary mb-0">{user?.totalpoints || 0}</h4>
                   </div>
                   <div>
                     <small className="text-muted d-block">Clicks en sesión</small>
@@ -128,7 +128,7 @@ const GameButton = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .scale-animation {
           transform: scale(0.95);
         }
