@@ -46,10 +46,10 @@ const Profile = () => {
 
   const getProgressToNextPlayer = () => {
     if (!userRank || userRank === 1) return null;
-    
+
     const currentPlayer = leaderboard[userRank - 1];
     const nextPlayer = leaderboard[userRank - 2];
-    
+
     if (!currentPlayer || !nextPlayer) return null;
 
     const difference = nextPlayer.totalpoints - currentPlayer.totalpoints;
@@ -93,7 +93,7 @@ const Profile = () => {
                     <small className="text-muted">Puntos Totales</small>
                   </div>
                 </div>
-                
+
                 <div className="col-6 col-md-4">
                   <div className="stat-card">
                     <i className="bi bi-trophy-fill text-primary fs-1"></i>
@@ -101,7 +101,7 @@ const Profile = () => {
                     <small className="text-muted">Posición Global</small>
                   </div>
                 </div>
-                
+
                 <div className="col-12 col-md-4">
                   <div className="stat-card">
                     <i className="bi bi-people-fill text-success fs-1"></i>
@@ -121,12 +121,12 @@ const Profile = () => {
                   <i className="bi bi-graph-up-arrow me-2"></i>
                   Progreso hacia el siguiente jugador
                 </h5>
-                
+
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <span>Te faltan <strong>{pointsToNext.toLocaleString()}</strong> puntos</span>
                   <span className="text-muted">#{userRank - 1}</span>
                 </div>
-                
+
                 <div className="progress" style={{ height: '20px' }}>
                   <div
                     className="progress-bar bg-success"
@@ -144,13 +144,13 @@ const Profile = () => {
           )}
 
           {/* Logros y mensajes motivacionales */}
-          <div className="card shadow">
+          <div className="card shadow mb-4">
             <div className="card-body">
               <h5 className="card-title mb-3">
                 <i className="bi bi-award-fill me-2"></i>
                 Estadísticas
               </h5>
-              
+
               <div className="list-group list-group-flush">
                 <div className="list-group-item d-flex justify-content-between align-items-center">
                   <div>
@@ -161,7 +161,7 @@ const Profile = () => {
                     {user?.totalpoints?.toLocaleString() || 0}
                   </span>
                 </div>
-                
+
                 <div className="list-group-item d-flex justify-content-between align-items-center">
                   <div>
                     <i className="bi bi-graph-up me-2 text-success"></i>
@@ -171,7 +171,7 @@ const Profile = () => {
                     #{userRank || '-'} de {leaderboard.length}
                   </span>
                 </div>
-                
+
                 <div className="list-group-item">
                   <div className="alert alert-info mb-0">
                     <i className="bi bi-lightbulb-fill me-2"></i>
@@ -181,6 +181,24 @@ const Profile = () => {
               </div>
             </div>
           </div>
+
+          {/* 🏆 Nueva sección de premios */}
+          {user?.totalpoints > 12000 && (
+            <div className="card shadow-lg border-success mt-4 mb-5">
+              <div className="card-body text-center">
+                <h4 className="text-success mb-3">
+                  🎉 ¡Has desbloqueado la sección de premios!
+                </h4>
+                <p className="fs-5 fw-bold text-primary">12,000 puntos</p>
+                <img
+                  src="https://wallpapers.com/images/hd/surprised-mia-khalifa-photo-mmr7u8j9t127d2f9.jpg"
+                  alt="Premio especial"
+                  className="img-fluid rounded-4 shadow-sm"
+                  style={{ maxWidth: '300px' }}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -195,13 +213,13 @@ const Profile = () => {
           font-size: 3rem;
           font-weight: bold;
         }
-        
+
         .stat-card {
           padding: 1rem;
           border-radius: 8px;
           background-color: #f8f9fa;
         }
-        
+
         @media (max-width: 576px) {
           .avatar-large {
             width: 80px;
