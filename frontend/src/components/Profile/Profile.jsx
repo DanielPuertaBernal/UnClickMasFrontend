@@ -199,6 +199,21 @@ const Profile = () => {
               </div>
             </div>
           )}
+          {user?.totalpoints > 20000 && (
+            <div className="card shadow-lg border-success mt-4 mb-5">
+              <div className="card-body text-center">
+                <p className="fs-5 fw-bold text-primary">20,000 puntos</p>
+                <p className="fs-6 text-muted">Eres todo un comeburra</p>
+                <img
+                  src="https://www.las2orillas.co/wp-content/uploads/2017/03/burras-580x400.jpg"
+                  alt="Premio especial"
+                  className="img-fluid rounded-4 shadow-sm"
+                  style={{ maxWidth: '300px' }}
+                />
+              </div>
+            </div>
+            
+          )}
         </div>
       </div>
 
