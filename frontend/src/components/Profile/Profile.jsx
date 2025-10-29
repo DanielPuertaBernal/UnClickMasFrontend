@@ -18,8 +18,8 @@ const Profile = () => {
       setLoading(true);
       const data = await gameService.getLeaderboard();
       setLeaderboard(data);
-      
-      const rank = data.findIndex((p) => p.UserName === user?.UserName) + 1;
+
+      const rank = data.findIndex((p) => p.username === user?.username) + 1;
       setUserRank(rank);
     } catch (error) {
       console.error('Error al cargar datos del perfil:', error);
@@ -51,8 +51,8 @@ const Profile = () => {
     const nextPlayer = leaderboard[userRank - 2];
     
     if (!currentPlayer || !nextPlayer) return null;
-    
-    const difference = nextPlayer.TotalPoints - currentPlayer.TotalPoints;
+
+    const difference = nextPlayer.totalpoints - currentPlayer.totalpoints;
     return difference;
   };
 
@@ -76,11 +76,11 @@ const Profile = () => {
           <div className="card shadow mb-4">
             <div className="card-body text-center p-4 p-md-5">
               <div className="avatar-large bg-primary text-white mb-3">
-                {user?.UserName?.charAt(0).toUpperCase()}
+                {user?.username?.charAt(0).toUpperCase()}
               </div>
-              
-              <h2 className="mb-2">{user?.UserName}</h2>
-              
+
+              <h2 className="mb-2">{user?.username}</h2>
+
               <span className={`badge bg-${getRankBadge()} fs-6 mb-3`}>
                 {getRankText()}
               </span>
@@ -89,7 +89,7 @@ const Profile = () => {
                 <div className="col-6 col-md-4">
                   <div className="stat-card">
                     <i className="bi bi-star-fill text-warning fs-1"></i>
-                    <h3 className="mt-2 mb-0">{user?.TotalPoints?.toLocaleString() || 0}</h3>
+                    <h3 className="mt-2 mb-0">{user?.totalpoints?.toLocaleString() || 0}</h3>
                     <small className="text-muted">Puntos Totales</small>
                   </div>
                 </div>
@@ -158,7 +158,7 @@ const Profile = () => {
                     Clicks totales
                   </div>
                   <span className="badge bg-primary rounded-pill">
-                    {user?.TotalPoints?.toLocaleString() || 0}
+                    {user?.totalpoints?.toLocaleString() || 0}
                   </span>
                 </div>
                 

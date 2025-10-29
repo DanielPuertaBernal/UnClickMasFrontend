@@ -5,10 +5,10 @@ import Swal from 'sweetalert2';
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    Name: '',
-    Email: '',
-    UserName: '',
-    Password: '',
+    name: '',
+    email: '',
+    username: '',
+    password: '',
     confirmPassword: '',
   });
   const [loading, setLoading] = useState(false);
