@@ -7,6 +7,7 @@ import Register from './components/Auth/Register';
 import GameButton from './components/Game/GameButton';
 import Leaderboard from './components/Leaderboard/Leaderboard';
 import Profile from './components/Profile/Profile';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 // Componente para rutas protegidas
 const PrivateRoute = ({ children }) => {
@@ -47,6 +48,7 @@ function AppContent() {
 
   return (
     <div className="app-container">
+      <SpeedInsights />
       {user && <Navbar />}
       
       <Routes>
